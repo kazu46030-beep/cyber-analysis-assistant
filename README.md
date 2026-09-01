@@ -1,6 +1,6 @@
-# SOC Analysis Workflows
+# Cyber Analysis Assistant
 
-Codexと承認済みMCPを使うSOC解析のための、Agentルール、Skill、Tool方針、レポート形式を管理するリポジトリです。
+Codexと承認済みMCPを使うサイバー解析支援のための、Agentルール、Skill、Tool方針、レポート形式を管理するリポジトリです。
 
 ## 構成
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ghidra Static Analysis"
+  short_description: "GhidraMCPから限定Evidenceを安全に収集"
+  default_prompt: "$ghidra-static-analysis を使い、現在のGhidra Programを必要最小限の読み取り専用Toolで解析してください。"

@@ -88,4 +88,4 @@ python3 -m unittest discover -s tests -v
 
 成功時はvalidatorが`"status": "pass"`を返し、unittestは全件`ok`となる。失敗時は対象ファイルと違反したInvariantが標準エラーへ表示される。
 
-2026-09-02の実行結果は、validator `pass`、unittest 12件すべて`ok`だった。
+2026-09-02の最終実行結果は、validator `pass`、レポート反復評価`pass`、unittest 14件すべて`ok`だった。

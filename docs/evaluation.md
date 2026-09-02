@@ -20,7 +20,10 @@
 
 ```bash
 python3 scripts/validate_repository.py --json
+python3 scripts/evaluate_report_runs.py
 python3 -m unittest discover -s tests -v
 ```
 
-前者はSkill構造、参照、MCP契約、Evidence、期待レポート、公開文書のRFC1918 IP・ユーザー固有Path・Private Key混入を検査する。後者は正常系に加え、空、壊れたJSON、必須項目欠損、サイズ超過、禁止Tool、機密識別子キーの混入を検査する。
+`validate_repository.py`はSkill構造、参照、MCP契約、Evidence、期待レポート、公開文書のRFC1918 IP・ユーザー固有Path・Private Key混入を検査する。`evaluate_report_runs.py`は3回分の判定と主要Findingを比較する。unittestは正常系に加え、空、壊れたJSON、必須項目欠損、サイズ超過、禁止Tool、機密識別子キー、レポート欠損を検査する。
+
+現行PEの3回反復結果は[レポート反復評価](evaluations/2026-09-02-report-repeatability.md)を参照する。文章の完全一致ではなく、判定、主要Finding、根拠、禁止断定の有無を比較する。

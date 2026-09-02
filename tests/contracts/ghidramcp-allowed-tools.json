@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "source_policy": "skills/ghidra-static-analysis/references/ghidramcp-tool-policy.md",
+  "server_contract": {"plugin_name": "GhidraMCP", "plugin_version": "7.0.0"},
+  "default_policy": "deny",
+  "tools": [
+    {"name": "get_version", "input_schema_ts": "{ [key: string]: unknown; }"},
+    {"name": "mcp_schema", "input_schema_ts": "{ [key: string]: unknown; }"},
+    {"name": "get_metadata", "input_schema_ts": "{ program?: string; }"},
+    {"name": "list_imports", "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }"},
+    {"name": "list_exports", "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }"},
+    {"name": "list_functions_enhanced", "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }"},
+    {"name": "search_functions_enhanced", "input_schema_ts": "{ calling_convention?: string; has_custom_name?: boolean; is_external?: boolean; is_thunk?: boolean; limit?: number; max_xrefs?: number; min_xrefs?: number; name_pattern?: string; offset?: number; program?: string; regex?: boolean; sort_by?: string; }"},
+    {"name": "list_strings", "input_schema_ts": "{ filter?: string; limit?: number; offset?: number; program?: string; }"},
+    {"name": "get_function_by_address", "input_schema_ts": "{ address: string; program?: string; }"},
+    {"name": "decompile_function", "input_schema_ts": "{ address?: string; functions?: string; program?: string; timeout?: number; }"},
+    {"name": "get_function_xrefs", "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }"},
+    {"name": "get_xrefs_to", "input_schema_ts": "{ address: string; limit?: number; offset?: number; program?: string; }"},
+    {"name": "get_xrefs_from", "input_schema_ts": "{ address: string; limit?: number; offset?: number; program?: string; }"},
+    {"name": "get_function_callers", "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }"},
+    {"name": "get_function_callees", "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }"},
+    {"name": "get_function_call_graph", "input_schema_ts": "{ address?: string; depth?: number; direction?: string; name?: string; program?: string; }"},
+    {"name": "get_function_signature", "input_schema_ts": "{ address: string; program?: string; }"},
+    {"name": "get_function_variables", "input_schema_ts": "{ address?: string; filter?: string; function_name?: string; limit?: number; program?: string; }"},
+    {"name": "get_function_jump_targets", "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }"},
+    {"name": "analyze_control_flow", "input_schema_ts": "{ function_name: string; program?: string; }"},
+    {"name": "analyze_dataflow", "input_schema_ts": "{ address: string; direction?: string; max_steps?: number; program?: string; variable?: string; }"},
+    {"name": "find_anti_analysis_techniques", "input_schema_ts": "{ program?: string; }"},
+    {"name": "detect_crypto_constants", "input_schema_ts": "{ program?: string; }"},
+    {"name": "detect_malware_behaviors", "input_schema_ts": "{ program?: string; }"}
+  ],
+  "call_constraints": {
+    "list_limit_max": 100,
+    "list_strings_requires_nonempty_filter": true,
+    "decompile_function_forbids_functions_argument": true,
+    "get_metadata_max_calls_per_analysis": 1,
+    "contract_tool_max_calls_per_snapshot": 1,
+    "detail_list_limit_max": 100,
+    "dataflow_max_steps": 100
+  }
+}

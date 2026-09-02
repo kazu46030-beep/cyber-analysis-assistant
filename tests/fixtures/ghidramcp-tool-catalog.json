@@ -1,0 +1,1375 @@
+{
+  "schema_version": "1.0",
+  "captured_on": "2026-09-02",
+  "server_id": "ghidra_flare",
+  "source": "Codex runtime-exposed MCP tool metadata",
+  "tool_count": 273,
+  "policy_rule": "Only tools explicitly listed in ghidramcp-allowed-tools.json are allowed; every other exposed tool is blocked.",
+  "tools": [
+    {
+      "name": "add_function_tag",
+      "input_schema_ts": "{ assignments?: Array<unknown>; dry_run?: boolean; function?: string; program?: string; tags?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "add_memory_reference",
+      "input_schema_ts": "{ dry_run?: boolean; from_address: string; operand_index?: number; program?: string; ref_type?: string; source_type?: string; to_address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "add_struct_field",
+      "input_schema_ts": "{ dry_run?: boolean; field_name: string; field_type: string; offset?: number; program?: string; struct_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analysis_status",
+      "input_schema_ts": "{ program: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_api_call_chains",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_call_graph",
+      "input_schema_ts": "{ analysis_type?: string; end_function: string; program?: string; start_function: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_control_flow",
+      "input_schema_ts": "{ function_name: string; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "analyze_data_region",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; include_assembly_patterns?: boolean; include_boundary_detection?: boolean; include_xref_map?: boolean; max_scan_bytes?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_dataflow",
+      "input_schema_ts": "{ address: string; direction?: string; max_steps?: number; program?: string; variable?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "analyze_for_documentation",
+      "input_schema_ts": "{ function_address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_function_complete",
+      "input_schema_ts": "{ include_callees?: boolean; include_callers?: boolean; include_completeness?: boolean; include_disasm?: boolean; include_variables?: boolean; include_xrefs?: boolean; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_function_completeness",
+      "input_schema_ts": "{ addresses?: string; compact?: boolean; function_address?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_global_completeness",
+      "input_schema_ts": "{ address: string; compact?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "analyze_struct_field_usage",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; max_functions?: number; program?: string; struct_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "apply_data_classification",
+      "input_schema_ts": "{ address: string; classification: string; comment?: string; dry_run?: boolean; name?: string; program?: string; type_definition: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "apply_data_type",
+      "input_schema_ts": "{ address: string; clear_existing?: boolean; dry_run?: boolean; program?: string; strict_mode?: string; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "apply_function_documentation",
+      "input_schema_ts": "{ dry_run?: boolean; json_body: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "archive_ingest_function",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; program?: string; version_override?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "archive_ingest_program",
+      "input_schema_ts": "{ dry_run?: boolean; limit?: number; program?: string; skip_default_named?: boolean; version_override?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "audit_global",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "audit_globals_in_function",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "batch_apply_documentation",
+      "input_schema_ts": "{ address?: string | null; calling_convention?: string | null; decompiler_comments?: string | null; disassembly_comments?: string | null; dry_run?: boolean; goto?: string | null; name?: string | null; plate_comment?: string | null; program?: string | null; prototype?: string | null; score?: string | null; variable_renames?: string | null; variable_types?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "batch_get_comments",
+      "input_schema_ts": "{ addresses: string; only_with_comments?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "batch_rename_function_components",
+      "input_schema_ts": "{ dry_run?: boolean; function_address: string; function_name?: string; local_renames: { [key: string]: unknown; }; parameter_renames: { [key: string]: unknown; }; program?: string; return_type?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "batch_set_comments",
+      "input_schema_ts": "{ address: string; decompiler_comments?: Array<unknown>; disassembly_comments?: Array<unknown>; dry_run?: boolean; plate_comment?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "batch_string_anchor_report",
+      "input_schema_ts": "{ pattern?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "bulk_fuzzy_match",
+      "input_schema_ts": "{ filter: string; limit?: number; offset?: number; source_program: string; target_program: string; threshold?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "can_rename_at_address",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "check_connection",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "check_tools",
+      "input_schema_ts": "{ tools: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "clear_flow_and_repair",
+      "input_schema_ts": "{ dry_run?: boolean; end_address?: string; program?: string; start_address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "clear_function_comments",
+      "input_schema_ts": "{ address: string; clear_eol?: boolean; clear_plate?: boolean; clear_pre?: boolean; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "clear_instruction_flow_override",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "clone_data_type",
+      "input_schema_ts": "{ dry_run?: boolean; new_name: string; program?: string; source_type: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "close_program",
+      "input_schema_ts": "{ dry_run?: boolean; name: string; save?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "compare_programs_documentation",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "connect_instance",
+      "input_schema_ts": "{ project: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "convert_number",
+      "input_schema_ts": "{ size?: number; text: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_array_type",
+      "input_schema_ts": "{ base_type: string; dry_run?: boolean; length?: number; name?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_data_type_category",
+      "input_schema_ts": "{ category_path: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_enum",
+      "input_schema_ts": "{ dry_run?: boolean; name: string; program?: string; size?: number; values: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_folder",
+      "input_schema_ts": "{ dry_run?: boolean; path: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_function",
+      "input_schema_ts": "{ address: string; disassemble_first?: boolean; dry_run?: boolean; name?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_function_signature",
+      "input_schema_ts": "{ dry_run?: boolean; name: string; parameters: string; program?: string; return_type: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_function_tag",
+      "input_schema_ts": "{ comment?: string; dry_run?: boolean; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_label",
+      "input_schema_ts": "{ address?: string; dry_run?: boolean; labels?: Array<unknown>; name?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_memory_block",
+      "input_schema_ts": "{ address: string; comment?: string; dry_run?: boolean; execute?: boolean; name: string; program?: string; read?: boolean; size?: number; volatile?: boolean; write?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_pointer_type",
+      "input_schema_ts": "{ base_type: string; dry_run?: boolean; name?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_property_map",
+      "input_schema_ts": "{ dry_run?: boolean; name: string; program?: string; type?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_struct",
+      "input_schema_ts": "{ dry_run?: boolean; fields: string; name: string; program?: string; replace_placeholder?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_typedef",
+      "input_schema_ts": "{ base_type: string; dry_run?: boolean; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "create_union",
+      "input_schema_ts": "{ dry_run?: boolean; fields: string; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_attach",
+      "input_schema_ts": "{ target: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_continue",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_detach",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_dynamic_to_static",
+      "input_schema_ts": "{ address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_interrupt",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_launch",
+      "input_schema_ts": "{ args?: string; cwd?: string; dry_run?: boolean; executable_path: string; offer?: string; program?: string; python_executable?: string; timeout_seconds?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_launch_offers",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_list_breakpoints",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_list_breakpoints_2",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_modules",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_modules_2",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_read_args",
+      "input_schema_ts": "{ arg_names?: string; convention?: string; count?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_read_memory",
+      "input_schema_ts": "{ address: string; address_type?: string; module?: string; size?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_read_memory_2",
+      "input_schema_ts": "{ address: string; size?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_registers",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_registers_2",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_remove_breakpoint",
+      "input_schema_ts": "{ bp_id: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_remove_breakpoint_2",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_resolve_ordinal",
+      "input_schema_ts": "{ dll: string; ordinal: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_resume",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_set_breakpoint",
+      "input_schema_ts": "{ bp_type?: string; ghidra_address: string; module?: string; oneshot?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_set_breakpoint_2",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_stack_trace",
+      "input_schema_ts": "{ depth?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_stack_trace_2",
+      "input_schema_ts": "{ depth?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_static_to_dynamic",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_status",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_status_2",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_step_into",
+      "input_schema_ts": "{ count?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_step_into_2",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_step_out",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_step_over",
+      "input_schema_ts": "{ count?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_step_over_2",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_trace_function",
+      "input_schema_ts": "{ arg_count?: number; arg_names?: string; capture_return?: boolean; convention?: string; ghidra_address: string; max_hits?: number; module?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_trace_list",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_trace_log",
+      "input_schema_ts": "{ last_n?: number; trace_id?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_trace_stop",
+      "input_schema_ts": "{ trace_id?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_traces",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_watch_log",
+      "input_schema_ts": "{ last_n?: number; watch_id?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_watch_memory",
+      "input_schema_ts": "{ access?: string; ghidra_address: string; module?: string; size?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "debugger_watch_stop",
+      "input_schema_ts": "{ watch_id?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "decompile_function",
+      "input_schema_ts": "{ address?: string; functions?: string; program?: string; timeout?: number; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "delete_bookmark",
+      "input_schema_ts": "{ address: string; category?: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "delete_data_type",
+      "input_schema_ts": "{ dry_run?: boolean; program?: string; resolve_demangler_duplicate?: boolean; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "delete_file",
+      "input_schema_ts": "{ dry_run?: boolean; filePath: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "delete_function",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "delete_function_tag",
+      "input_schema_ts": "{ dry_run?: boolean; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "delete_label",
+      "input_schema_ts": "{ address?: string; dry_run?: boolean; labels?: Array<unknown>; name?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "delete_property_map",
+      "input_schema_ts": "{ dry_run?: boolean; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "detect_array_bounds",
+      "input_schema_ts": "{ address: string; analyze_indexing?: boolean; analyze_loop_bounds?: boolean; dry_run?: boolean; max_scan_range?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "detect_crypto_constants",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "detect_malware_behaviors",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "diff_functions",
+      "input_schema_ts": "{ address_a: string; address_b: string; program_a: string; program_b: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "disassemble_bytes",
+      "input_schema_ts": "{ dry_run?: boolean; end_address?: string; include_instructions?: boolean; length?: number; max_instructions?: number; program?: string; restrict_to_execute_memory?: boolean; start_address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "disassemble_function",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "embed_struct_field",
+      "input_schema_ts": "{ dry_run?: boolean; embedded_struct: string; field_name?: string; parent_struct: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "emulate_function",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; max_steps?: number; memory: string; program?: string; read_memory_after?: string; registers: string; return_registers?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "emulate_hash_batch",
+      "input_schema_ts": "{ candidates: string; dry_run?: boolean; hash_function_address: string; initial_registers?: string; program?: string; result_register?: string; string_register: string; target_hash: string; wide_string?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "exit_ghidra",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "extract_iocs_with_context",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "find_anti_analysis_techniques",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "find_code_gaps",
+      "input_schema_ts": "{ limit?: number; min_size?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "find_dead_code",
+      "input_schema_ts": "{ function_name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "find_next_undefined_function",
+      "input_schema_ts": "{ criteria: string; direction: string; pattern: string; program?: string; start_address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "find_similar_functions",
+      "input_schema_ts": "{ program?: string; target_function: string; threshold?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "find_similar_functions_fuzzy",
+      "input_schema_ts": "{ address: string; limit?: number; source_program: string; target_program: string; threshold?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "find_undocumented_by_string",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "force_decompile",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_address_spaces",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_assembly_context",
+      "input_schema_ts": "{ context_instructions?: number; dry_run?: boolean; include_patterns: string; program?: string; xref_sources: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_bulk_function_hashes",
+      "input_schema_ts": "{ filter: string; limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_bulk_xrefs",
+      "input_schema_ts": "{ addresses: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_comment",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_current_address",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_current_function",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_current_program_info",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_current_selection",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_entry_points",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_enum_values",
+      "input_schema_ts": "{ enum_name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_external_location",
+      "input_schema_ts": "{ address: string; dll_name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_field_access_context",
+      "input_schema_ts": "{ dry_run?: boolean; field_offset?: number; num_examples?: number; program?: string; struct_address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_full_call_graph",
+      "input_schema_ts": "{ format?: string; limit?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_by_address",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_call_graph",
+      "input_schema_ts": "{ address?: string; depth?: number; direction?: string; name?: string; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_callees",
+      "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_callers",
+      "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_count",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_documentation",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_hash",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_jump_targets",
+      "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_labels",
+      "input_schema_ts": "{ limit?: number; name: string; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_pcode",
+      "input_schema_ts": "{ function_address: string; granularity?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_signature",
+      "input_schema_ts": "{ address: string; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_tags",
+      "input_schema_ts": "{ function: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_function_variables",
+      "input_schema_ts": "{ address?: string; filter?: string; function_name?: string; limit?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_function_xrefs",
+      "input_schema_ts": "{ address?: string; limit?: number; name?: string; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_language_metadata",
+      "input_schema_ts": "{ include_default_symbols?: boolean; include_registers?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_metadata",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_program_options",
+      "input_schema_ts": "{ group: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_property",
+      "input_schema_ts": "{ address: string; map: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_struct_layout",
+      "input_schema_ts": "{ program?: string; struct_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_type_size",
+      "input_schema_ts": "{ program?: string; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_valid_data_types",
+      "input_schema_ts": "{ category: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "get_version",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_xrefs_from",
+      "input_schema_ts": "{ address: string; limit?: number; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "get_xrefs_to",
+      "input_schema_ts": "{ address: string; limit?: number; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "import_data_types",
+      "input_schema_ts": "{ dry_run?: boolean; format?: string; program?: string; source: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "import_file",
+      "input_schema_ts": "{ auto_analyze?: boolean; compiler_spec?: string | null; file_path: string; language?: string | null; project_folder?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "inspect_memory_content",
+      "input_schema_ts": "{ address: string; detect_strings?: boolean; length?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_analyzers",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_bookmarks",
+      "input_schema_ts": "{ address?: string; category?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_calling_conventions",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_class_members",
+      "input_schema_ts": "{ class_name: string; limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_classes",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_data_items",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_data_items_by_xrefs",
+      "input_schema_ts": "{ filter?: string; format?: string; include_all_sections?: boolean; limit?: number; min_xrefs?: number; offset?: number; program?: string; type_filter?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_data_type_categories",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_data_types",
+      "input_schema_ts": "{ category?: string; limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_exports",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "list_external_locations",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_function_tags",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_functions",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_functions_enhanced",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "list_globals",
+      "input_schema_ts": "{ filter?: string; include_all_sections?: boolean; limit?: number; min_xrefs?: number; name_substring?: string; offset?: number; program?: string; type_filter?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_imports",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "list_instances",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_methods",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_namespaces",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_open_programs",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_option_groups",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_project_files",
+      "input_schema_ts": "{ folder: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_properties",
+      "input_schema_ts": "{ end?: string; limit?: number; map: string; offset?: number; program?: string; start?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_property_maps",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_scripts",
+      "input_schema_ts": "{ filter?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_segments",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_shadowed_globals",
+      "input_schema_ts": "{ include_all_sections?: boolean; limit?: number; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "list_strings",
+      "input_schema_ts": "{ filter?: string; limit?: number; offset?: number; program?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "list_tool_groups",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "load_tool_group",
+      "input_schema_ts": "{ group: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "mcp_health",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "mcp_schema",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "merge_program_documentation",
+      "input_schema_ts": "{ dry_run?: boolean; source: string; target: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "modify_struct_field",
+      "input_schema_ts": "{ dry_run?: boolean; field_name?: string; new_name?: string; new_type?: string; program?: string; struct_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "modify_struct_field_type",
+      "input_schema_ts": "{ dry_run?: boolean; field_name: string; new_type: string; program?: string; struct_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "move_data_type_to_category",
+      "input_schema_ts": "{ category_path: string; dry_run?: boolean; program?: string; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "move_file",
+      "input_schema_ts": "{ destFolder: string; dry_run?: boolean; filePath: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "move_folder",
+      "input_schema_ts": "{ destPath: string; dry_run?: boolean; sourcePath: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "open_program",
+      "input_schema_ts": "{ auto_analyze?: boolean; path: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "open_project",
+      "input_schema_ts": "{ dry_run?: boolean; headless?: string | null; path?: string | null; program?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "oracle_call_function",
+      "input_schema_ts": "{ args?: string; callconv?: string; module: string; on_game_thread?: boolean; ret?: string; rva: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "oracle_modules",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "oracle_prove_function",
+      "input_schema_ts": "{ spec: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "oracle_read_memory",
+      "input_schema_ts": "{ length?: number; module: string; rva: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "oracle_status",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "project_info",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "prompt_policy",
+      "input_schema_ts": "{ action?: string; dry_run?: boolean; reason?: string; seconds?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "read_memory",
+      "input_schema_ts": "{ address: string; length?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "reanalyze",
+      "input_schema_ts": "{ dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "recreate_struct",
+      "input_schema_ts": "{ dry_run?: boolean; fields: string; force?: boolean; name: string; program?: string; replace_placeholder?: boolean; size?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "remove_function_tag",
+      "input_schema_ts": "{ assignments?: Array<unknown>; dry_run?: boolean; function?: string; program?: string; tags?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "remove_program_option",
+      "input_schema_ts": "{ dry_run?: boolean; group: string; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "remove_property",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; map: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "remove_reference",
+      "input_schema_ts": "{ dry_run?: boolean; from_address: string; operand_index?: number; program?: string; to_address: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "remove_struct_field",
+      "input_schema_ts": "{ dry_run?: boolean; field_name: string; program?: string; struct_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "rename_data_type",
+      "input_schema_ts": "{ dry_run?: boolean; new_name: string; old_name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "rename_function",
+      "input_schema_ts": "{ dry_run?: boolean; new_name: string; old_name: string; program?: string; strict_mode?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "rename_symbol",
+      "input_schema_ts": "{ dry_run?: boolean; kind?: string; new_name: string; old_name?: string; program?: string; target: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "rename_variables",
+      "input_schema_ts": "{ dry_run?: boolean; force_individual?: boolean; function_address: string; program?: string; variable_renames: { [key: string]: unknown; }; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "resize_struct",
+      "input_schema_ts": "{ dry_run?: boolean; force?: boolean; name: string; new_size: number; preserve_fields?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "resolve_duplicate_type",
+      "input_schema_ts": "{ delete_demangler_stub?: boolean; dry_run?: boolean; program?: string; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "run_analysis",
+      "input_schema_ts": "{ dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "run_ghidra_script",
+      "input_schema_ts": "{ args?: string; capture_output?: boolean; dry_run?: boolean; program?: string; script_name: string; timeout_seconds?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "run_script_inline",
+      "input_schema_ts": "{ args?: string; code: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "save_all_programs",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "save_program",
+      "input_schema_ts": "{ program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_byte_patterns",
+      "input_schema_ts": "{ mask?: string; pattern: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_data_types",
+      "input_schema_ts": "{ limit?: number; offset?: number; pattern: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_functions",
+      "input_schema_ts": "{ limit?: number; name_pattern?: string; offset?: number; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_functions_by_tag",
+      "input_schema_ts": "{ limit?: number; offset?: number; program?: string; tag: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_functions_enhanced",
+      "input_schema_ts": "{ calling_convention?: string; has_custom_name?: boolean; is_external?: boolean; is_thunk?: boolean; limit?: number; max_xrefs?: number; min_xrefs?: number; name_pattern?: string; offset?: number; program?: string; regex?: boolean; sort_by?: string; }",
+      "policy": "allowed"
+    },
+    {
+      "name": "search_instructions",
+      "input_schema_ts": "{ function?: string; limit?: number; mnemonic?: string; operand_pattern?: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_strings",
+      "input_schema_ts": "{ encoding?: string; limit?: number; min_length?: number; offset?: number; program?: string; search_term: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "search_tools",
+      "input_schema_ts": "{ limit?: number; query: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_admin_set_permissions",
+      "input_schema_ts": "{ accessLevel?: string | null; dry_run?: boolean; repo?: string | null; user?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_admin_terminate_all_checkouts",
+      "input_schema_ts": "{ dry_run?: boolean; path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_admin_terminate_checkout",
+      "input_schema_ts": "{ checkoutId?: string | null; checkout_id?: string | null; dry_run?: boolean; path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_admin_users",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_authenticate",
+      "input_schema_ts": "{ dry_run?: boolean; password?: string | null; username?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_checkouts",
+      "input_schema_ts": "{ path?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_connect",
+      "input_schema_ts": "{ dry_run?: boolean; host?: string | null; port?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_disconnect",
+      "input_schema_ts": "{ dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_repositories",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_repository_create",
+      "input_schema_ts": "{ dry_run?: boolean; name?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_repository_file",
+      "input_schema_ts": "{ path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_repository_files",
+      "input_schema_ts": "{ path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_status",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_version_control_add",
+      "input_schema_ts": "{ comment?: string | null; dry_run?: boolean; keepCheckedOut?: string | null; path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_version_control_checkin",
+      "input_schema_ts": "{ comment?: string | null; dry_run?: boolean; keepCheckedOut?: string | null; path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_version_control_checkout",
+      "input_schema_ts": "{ dry_run?: boolean; path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_version_control_undo_checkout",
+      "input_schema_ts": "{ dry_run?: boolean; path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "server_version_history",
+      "input_schema_ts": "{ path?: string | null; repo?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_bookmark",
+      "input_schema_ts": "{ address: string; category?: string; comment?: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_comment",
+      "input_schema_ts": "{ address: string; comment: string; dry_run?: boolean; program?: string; type?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_function_no_return",
+      "input_schema_ts": "{ dry_run?: boolean; function_address: string; no_return: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_function_prototype",
+      "input_schema_ts": "{ calling_convention?: string; dry_run?: boolean; function_address: string; program?: string; prototype: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_function_tag_comment",
+      "input_schema_ts": "{ comment: string; dry_run?: boolean; name: string; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_function_this_type",
+      "input_schema_ts": "{ dry_run?: boolean; function_address: string; program?: string; this_type: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_global",
+      "input_schema_ts": "{ address: string; allow_evict?: boolean; array_length?: number; dry_run?: boolean; name: string; plate_comment: string; program?: string; strict_mode?: string; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_image_base",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; program?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_program_option",
+      "input_schema_ts": "{ dry_run?: boolean; group: string; name: string; program?: string; type?: string; value: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_property",
+      "input_schema_ts": "{ address: string; dry_run?: boolean; map: string; program?: string; value?: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_variable_storage",
+      "input_schema_ts": "{ dry_run?: boolean; function_address: string; program?: string; storage: string; variable_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_variable_type",
+      "input_schema_ts": "{ dry_run?: boolean; function_address: string; new_type: string; program?: string; variable_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "set_variables",
+      "input_schema_ts": "{ dry_run?: boolean; function_address: string; program: string; variables: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "suggest_field_names",
+      "input_schema_ts": "{ dry_run?: boolean; program?: string; struct_address: string; struct_size?: number; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "switch_program",
+      "input_schema_ts": "{ program: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "tool_goto_address",
+      "input_schema_ts": "{ address?: string | null; dry_run?: boolean; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "tool_launch_codebrowser",
+      "input_schema_ts": "{ dry_run?: boolean; path?: string | null; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "tool_running_tools",
+      "input_schema_ts": "{ [key: string]: unknown; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "unload_tool_group",
+      "input_schema_ts": "{ group: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "validate_data_type",
+      "input_schema_ts": "{ address?: string; program?: string; type_name: string; }",
+      "policy": "blocked_unlisted"
+    },
+    {
+      "name": "validate_function_prototype",
+      "input_schema_ts": "{ calling_convention: string; function_address: string; program?: string; prototype: string; }",
+      "policy": "blocked_unlisted"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Roadmap
 
+## 現在地
+
+- Phase 0は、GhidraMCP 7.0.0のVersion、実Catalog、Input Schema、Tool分類、無害PEでの接続確認まで完了した。
+- Phase 1は、無害PE 1件でDecompiler中心の限定Evidence収集、5種の期待レポート、正常系・異常系テストまで完了した。次は通信、永続化、暗号・難読化等の評価ケースを増やす。
+- 実測結果は[Safe Test PE検証結果](evaluations/2026-09-02-safe-test-pe.md)を参照する。
+
 ## Phase 0: 契約確認
 
 - 実MCPの配布元、Version、Tool Catalog、Input Schemaを記録する。

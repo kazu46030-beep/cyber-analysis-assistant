@@ -1,0 +1,6633 @@
+{
+  "schema_version": "1.0",
+  "captured_on": "2026-09-02",
+  "source_tool": "mcp_schema",
+  "tool_count": 239,
+  "note": "Normalized from the live MCP schema response. Descriptions are omitted; paths, methods, categories, and input parameters are retained.",
+  "tools": [
+    {
+      "name": "add_function_tag",
+      "path": "/add_function_tag",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "tags",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "assignments",
+          "type": "array",
+          "required": false,
+          "default": "[]",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "add_memory_reference",
+      "path": "/add_memory_reference",
+      "method": "POST",
+      "category": "xref",
+      "params": [
+        {
+          "name": "from_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "to_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "ref_type",
+          "type": "string",
+          "required": false,
+          "default": "DATA",
+          "source": "body"
+        },
+        {
+          "name": "source_type",
+          "type": "string",
+          "required": false,
+          "default": "USER_DEFINED",
+          "source": "body"
+        },
+        {
+          "name": "operand_index",
+          "type": "integer",
+          "required": false,
+          "default": "-1",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "add_struct_field",
+      "path": "/add_struct_field",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "struct_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "-1",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analysis_status",
+      "path": "/analysis_status",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_api_call_chains",
+      "path": "/analyze_api_call_chains",
+      "method": "GET",
+      "category": "malware",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_call_graph",
+      "path": "/analyze_call_graph",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "start_function",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "end_function",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "analysis_type",
+          "type": "string",
+          "required": false,
+          "default": "summary",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_control_flow",
+      "path": "/analyze_control_flow",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "function_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_data_region",
+      "path": "/analyze_data_region",
+      "method": "POST",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "max_scan_bytes",
+          "type": "integer",
+          "required": false,
+          "default": "1024",
+          "source": "body"
+        },
+        {
+          "name": "include_xref_map",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "include_assembly_patterns",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "include_boundary_detection",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_dataflow",
+      "path": "/analyze_dataflow",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "variable",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "required": false,
+          "default": "backward",
+          "source": "query"
+        },
+        {
+          "name": "max_steps",
+          "type": "integer",
+          "required": false,
+          "default": "20",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_for_documentation",
+      "path": "/analyze_for_documentation",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_function_complete",
+      "path": "/analyze_function_complete",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "include_xrefs",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "include_callees",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "include_callers",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "include_disasm",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "include_variables",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "include_completeness",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_function_completeness",
+      "path": "/analyze_function_completeness",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "addresses",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_global_completeness",
+      "path": "/analyze_global_completeness",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "analyze_struct_field_usage",
+      "path": "/analyze_struct_field_usage",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "struct_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "max_functions",
+          "type": "integer",
+          "required": false,
+          "default": "10",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "apply_data_classification",
+      "path": "/apply_data_classification",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "classification",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "type_definition",
+          "type": "any",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "apply_data_type",
+      "path": "/apply_data_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "clear_existing",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "strict_mode",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "apply_function_documentation",
+      "path": "/apply_function_documentation",
+      "method": "POST",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "json_body",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "archive_ingest_function",
+      "path": "/archive_ingest_function",
+      "method": "POST",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "version_override",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "dry_run",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "archive_ingest_program",
+      "path": "/archive_ingest_program",
+      "method": "POST",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "version_override",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "skip_default_named",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "dry_run",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "audit_global",
+      "path": "/audit_global",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "audit_globals_in_function",
+      "path": "/audit_globals_in_function",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "batch_apply_documentation",
+      "path": "/batch_apply_documentation",
+      "method": "POST",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "prototype",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "calling_convention",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "variable_types",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "variable_renames",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "plate_comment",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "decompiler_comments",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "disassembly_comments",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "goto",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "score",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "batch_get_comments",
+      "path": "/batch_get_comments",
+      "method": "GET",
+      "category": "comment",
+      "params": [
+        {
+          "name": "addresses",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "only_with_comments",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "batch_rename_function_components",
+      "path": "/batch_rename_function_components",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "function_name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "parameter_renames",
+          "type": "object",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "local_renames",
+          "type": "object",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "return_type",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "batch_set_comments",
+      "path": "/batch_set_comments",
+      "method": "POST",
+      "category": "comment",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "decompiler_comments",
+          "type": "array",
+          "required": false,
+          "default": "[]",
+          "source": "body"
+        },
+        {
+          "name": "disassembly_comments",
+          "type": "array",
+          "required": false,
+          "default": "[]",
+          "source": "body"
+        },
+        {
+          "name": "plate_comment",
+          "type": "string",
+          "required": false,
+          "default": "null",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "batch_string_anchor_report",
+      "path": "/batch_string_anchor_report",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "pattern",
+          "type": "string",
+          "required": false,
+          "default": ".cpp",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "bulk_fuzzy_match",
+      "path": "/bulk_fuzzy_match",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "source_program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "target_program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "threshold",
+          "type": "number",
+          "required": false,
+          "default": "0.7",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "50",
+          "source": "query"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "can_rename_at_address",
+      "path": "/can_rename_at_address",
+      "method": "GET",
+      "category": "symbol",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "check_connection",
+      "path": "/check_connection",
+      "method": "GET",
+      "category": "utility",
+      "params": []
+    },
+    {
+      "name": "clear_flow_and_repair",
+      "path": "/clear_flow_and_repair",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "start_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "end_address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "clear_function_comments",
+      "path": "/clear_function_comments",
+      "method": "POST",
+      "category": "comment",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "clear_plate",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "clear_pre",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "clear_eol",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "clear_instruction_flow_override",
+      "path": "/clear_instruction_flow_override",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "clone_data_type",
+      "path": "/clone_data_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "source_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "close_program",
+      "path": "/close_program",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "save",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "compare_programs_documentation",
+      "path": "/compare_programs_documentation",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "convert_number",
+      "path": "/convert_number",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "size",
+          "type": "integer",
+          "required": false,
+          "default": "4",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_array_type",
+      "path": "/create_array_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "base_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "length",
+          "type": "integer",
+          "required": false,
+          "default": "1",
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_data_type_category",
+      "path": "/create_data_type_category",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "category_path",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_enum",
+      "path": "/create_enum",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "values",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "size",
+          "type": "integer",
+          "required": false,
+          "default": "4",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_folder",
+      "path": "/create_folder",
+      "method": "POST",
+      "category": "project",
+      "params": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_function",
+      "path": "/create_function",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "disassemble_first",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_function_signature",
+      "path": "/create_function_signature",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "return_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "parameters",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_function_tag",
+      "path": "/create_function_tag",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_label",
+      "path": "/create_label",
+      "method": "POST",
+      "category": "symbol",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "labels",
+          "type": "array",
+          "required": false,
+          "default": "[]",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_memory_block",
+      "path": "/create_memory_block",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "size",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "body"
+        },
+        {
+          "name": "read",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "write",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "execute",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "volatile",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_pointer_type",
+      "path": "/create_pointer_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "base_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_property_map",
+      "path": "/create_property_map",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "default": "string",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_struct",
+      "path": "/create_struct",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "fields",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "replace_placeholder",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_typedef",
+      "path": "/create_typedef",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "base_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "create_union",
+      "path": "/create_union",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "fields",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_dynamic_to_static",
+      "path": "/debugger/dynamic_to_static",
+      "method": "GET",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_interrupt",
+      "path": "/debugger/interrupt",
+      "method": "POST",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_launch",
+      "path": "/debugger/launch",
+      "method": "POST",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "executable_path",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "args",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "cwd",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "timeout_seconds",
+          "type": "integer",
+          "required": false,
+          "default": "60",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "offer",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "python_executable",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "debugger_launch_offers",
+      "path": "/debugger/launch_offers",
+      "method": "GET",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_list_breakpoints",
+      "path": "/debugger/list_breakpoints",
+      "method": "GET",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_modules",
+      "path": "/debugger/modules",
+      "method": "GET",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_read_memory",
+      "path": "/debugger/read_memory",
+      "method": "GET",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "size",
+          "type": "integer",
+          "required": false,
+          "default": "64",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_registers",
+      "path": "/debugger/registers",
+      "method": "GET",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_remove_breakpoint",
+      "path": "/debugger/remove_breakpoint",
+      "method": "POST",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_resume",
+      "path": "/debugger/resume",
+      "method": "POST",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_set_breakpoint",
+      "path": "/debugger/set_breakpoint",
+      "method": "POST",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_stack_trace",
+      "path": "/debugger/stack_trace",
+      "method": "GET",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "depth",
+          "type": "integer",
+          "required": false,
+          "default": "20",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_static_to_dynamic",
+      "path": "/debugger/static_to_dynamic",
+      "method": "GET",
+      "category": "debugger",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "debugger_status",
+      "path": "/debugger/status",
+      "method": "GET",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_step_into",
+      "path": "/debugger/step_into",
+      "method": "POST",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_step_out",
+      "path": "/debugger/step_out",
+      "method": "POST",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_step_over",
+      "path": "/debugger/step_over",
+      "method": "POST",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "debugger_traces",
+      "path": "/debugger/traces",
+      "method": "GET",
+      "category": "debugger",
+      "params": []
+    },
+    {
+      "name": "decompile_function",
+      "path": "/decompile_function",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "functions",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "timeout",
+          "type": "integer",
+          "required": false,
+          "default": "60",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "delete_bookmark",
+      "path": "/delete_bookmark",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "delete_data_type",
+      "path": "/delete_data_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "resolve_demangler_duplicate",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "delete_file",
+      "path": "/delete_file",
+      "method": "POST",
+      "category": "project",
+      "params": [
+        {
+          "name": "filePath",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "delete_function",
+      "path": "/delete_function",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "delete_function_tag",
+      "path": "/delete_function_tag",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "delete_label",
+      "path": "/delete_label",
+      "method": "POST",
+      "category": "symbol",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "labels",
+          "type": "array",
+          "required": false,
+          "default": "[]",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "delete_property_map",
+      "path": "/delete_property_map",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "detect_array_bounds",
+      "path": "/detect_array_bounds",
+      "method": "POST",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "analyze_loop_bounds",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "analyze_indexing",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "max_scan_range",
+          "type": "integer",
+          "required": false,
+          "default": "2048",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "detect_crypto_constants",
+      "path": "/detect_crypto_constants",
+      "method": "GET",
+      "category": "malware",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "detect_malware_behaviors",
+      "path": "/detect_malware_behaviors",
+      "method": "GET",
+      "category": "malware",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "diff_functions",
+      "path": "/diff_functions",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address_a",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "address_b",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program_a",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program_b",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "disassemble_bytes",
+      "path": "/disassemble_bytes",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "start_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "end_address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "length",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "body"
+        },
+        {
+          "name": "restrict_to_execute_memory",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "include_instructions",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "max_instructions",
+          "type": "integer",
+          "required": false,
+          "default": "1000",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "disassemble_function",
+      "path": "/disassemble_function",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "embed_struct_field",
+      "path": "/embed_struct_field",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "parent_struct",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "embedded_struct",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "emulate_function",
+      "path": "/emulate_function",
+      "method": "POST",
+      "category": "emulation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "registers",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "memory",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "max_steps",
+          "type": "integer",
+          "required": false,
+          "default": "10000",
+          "source": "body"
+        },
+        {
+          "name": "return_registers",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "read_memory_after",
+          "type": "json",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "emulate_hash_batch",
+      "path": "/emulate_hash_batch",
+      "method": "POST",
+      "category": "emulation",
+      "params": [
+        {
+          "name": "hash_function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "string_register",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "result_register",
+          "type": "string",
+          "required": false,
+          "default": "EAX",
+          "source": "body"
+        },
+        {
+          "name": "target_hash",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "candidates",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "initial_registers",
+          "type": "json",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "wide_string",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "exit_ghidra",
+      "path": "/exit_ghidra",
+      "method": "POST",
+      "category": "program",
+      "params": []
+    },
+    {
+      "name": "extract_iocs_with_context",
+      "path": "/extract_iocs_with_context",
+      "method": "GET",
+      "category": "malware",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_anti_analysis_techniques",
+      "path": "/find_anti_analysis_techniques",
+      "method": "GET",
+      "category": "malware",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_code_gaps",
+      "path": "/find_code_gaps",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "min_size",
+          "type": "integer",
+          "required": false,
+          "default": "1",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_dead_code",
+      "path": "/find_dead_code",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "function_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_next_undefined_function",
+      "path": "/find_next_undefined_function",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "start_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "criteria",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "pattern",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_similar_functions",
+      "path": "/find_similar_functions",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "target_function",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "threshold",
+          "type": "number",
+          "required": false,
+          "default": "0.8",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_similar_functions_fuzzy",
+      "path": "/find_similar_functions_fuzzy",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "source_program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "target_program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "threshold",
+          "type": "number",
+          "required": false,
+          "default": "0.7",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "20",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "find_undocumented_by_string",
+      "path": "/find_undocumented_by_string",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "force_decompile",
+      "path": "/force_decompile",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_address_spaces",
+      "path": "/get_address_spaces",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_assembly_context",
+      "path": "/get_assembly_context",
+      "method": "POST",
+      "category": "xref",
+      "params": [
+        {
+          "name": "xref_sources",
+          "type": "any",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "context_instructions",
+          "type": "integer",
+          "required": false,
+          "default": "5",
+          "source": "body"
+        },
+        {
+          "name": "include_patterns",
+          "type": "any",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_bulk_function_hashes",
+      "path": "/get_bulk_function_hashes",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_bulk_xrefs",
+      "path": "/get_bulk_xrefs",
+      "method": "POST",
+      "category": "xref",
+      "params": [
+        {
+          "name": "addresses",
+          "type": "any",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_comment",
+      "path": "/get_comment",
+      "method": "GET",
+      "category": "comment",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_current_address",
+      "path": "/get_current_address",
+      "method": "GET",
+      "category": "getter",
+      "params": []
+    },
+    {
+      "name": "get_current_function",
+      "path": "/get_current_function",
+      "method": "GET",
+      "category": "getter",
+      "params": []
+    },
+    {
+      "name": "get_current_program_info",
+      "path": "/get_current_program_info",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_current_selection",
+      "path": "/get_current_selection",
+      "method": "GET",
+      "category": "getter",
+      "params": []
+    },
+    {
+      "name": "get_entry_points",
+      "path": "/get_entry_points",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_enum_values",
+      "path": "/get_enum_values",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "enum_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_external_location",
+      "path": "/get_external_location",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "dll_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_field_access_context",
+      "path": "/get_field_access_context",
+      "method": "POST",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "struct_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "body"
+        },
+        {
+          "name": "num_examples",
+          "type": "integer",
+          "required": false,
+          "default": "5",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_full_call_graph",
+      "path": "/get_full_call_graph",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "format",
+          "type": "string",
+          "required": false,
+          "default": "edges",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "1000",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_by_address",
+      "path": "/get_function_by_address",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_call_graph",
+      "path": "/get_function_call_graph",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "depth",
+          "type": "integer",
+          "required": false,
+          "default": "2",
+          "source": "query"
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "required": false,
+          "default": "both",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_callees",
+      "path": "/get_function_callees",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_callers",
+      "path": "/get_function_callers",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_count",
+      "path": "/get_function_count",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_documentation",
+      "path": "/get_function_documentation",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_hash",
+      "path": "/get_function_hash",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_jump_targets",
+      "path": "/get_function_jump_targets",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_labels",
+      "path": "/get_function_labels",
+      "method": "GET",
+      "category": "symbol",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "20",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_pcode",
+      "path": "/get_function_pcode",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "granularity",
+          "type": "string",
+          "required": false,
+          "default": "high",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_signature",
+      "path": "/get_function_signature",
+      "method": "GET",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_tags",
+      "path": "/get_function_tags",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "function",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_variables",
+      "path": "/get_function_variables",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "200",
+          "source": "query"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "default": "all",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_function_xrefs",
+      "path": "/get_function_xrefs",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_language_metadata",
+      "path": "/get_language_metadata",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "include_registers",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "include_default_symbols",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_metadata",
+      "path": "/get_metadata",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_program_options",
+      "path": "/get_program_options",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "group",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_property",
+      "path": "/get_property",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "map",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_struct_layout",
+      "path": "/get_struct_layout",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "struct_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_type_size",
+      "path": "/get_type_size",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_valid_data_types",
+      "path": "/get_valid_data_types",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "category",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_version",
+      "path": "/get_version",
+      "method": "GET",
+      "category": "utility",
+      "params": []
+    },
+    {
+      "name": "get_xrefs_from",
+      "path": "/get_xrefs_from",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "get_xrefs_to",
+      "path": "/get_xrefs_to",
+      "method": "GET",
+      "category": "xref",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "import_data_types",
+      "path": "/import_data_types",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "source",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "required": false,
+          "default": "c",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "import_file",
+      "path": "/import_file",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "project_folder",
+          "type": "string",
+          "required": false,
+          "default": "/",
+          "source": "body"
+        },
+        {
+          "name": "language",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "compiler_spec",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "auto_analyze",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "inspect_memory_content",
+      "path": "/inspect_memory_content",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "length",
+          "type": "integer",
+          "required": false,
+          "default": "64",
+          "source": "query"
+        },
+        {
+          "name": "detect_strings",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_analyzers",
+      "path": "/list_analyzers",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_bookmarks",
+      "path": "/list_bookmarks",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "category",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_calling_conventions",
+      "path": "/list_calling_conventions",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_class_members",
+      "path": "/list_class_members",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "class_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "200",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_classes",
+      "path": "/list_classes",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_data_items",
+      "path": "/list_data_items",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_data_items_by_xrefs",
+      "path": "/list_data_items_by_xrefs",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "required": false,
+          "default": "text",
+          "source": "query"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "default": "defined",
+          "source": "query"
+        },
+        {
+          "name": "type_filter",
+          "type": "string",
+          "required": false,
+          "default": "all",
+          "source": "query"
+        },
+        {
+          "name": "min_xrefs",
+          "type": "integer",
+          "required": false,
+          "default": "1",
+          "source": "query"
+        },
+        {
+          "name": "include_all_sections",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_data_type_categories",
+      "path": "/list_data_type_categories",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_data_types",
+      "path": "/list_data_types",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "category",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_exports",
+      "path": "/list_exports",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_external_locations",
+      "path": "/list_external_locations",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_function_tags",
+      "path": "/list_function_tags",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "500",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_functions",
+      "path": "/list_functions",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_functions_enhanced",
+      "path": "/list_functions_enhanced",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "10000",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_globals",
+      "path": "/list_globals",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "default": "all",
+          "source": "query"
+        },
+        {
+          "name": "type_filter",
+          "type": "string",
+          "required": false,
+          "default": "all",
+          "source": "query"
+        },
+        {
+          "name": "min_xrefs",
+          "type": "integer",
+          "required": false,
+          "default": "1",
+          "source": "query"
+        },
+        {
+          "name": "include_all_sections",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "name_substring",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_imports",
+      "path": "/list_imports",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_methods",
+      "path": "/list_methods",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_namespaces",
+      "path": "/list_namespaces",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_open_programs",
+      "path": "/list_open_programs",
+      "method": "GET",
+      "category": "program",
+      "params": []
+    },
+    {
+      "name": "list_option_groups",
+      "path": "/list_option_groups",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_project_files",
+      "path": "/list_project_files",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "folder",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_properties",
+      "path": "/list_properties",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "map",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "start",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "end",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_property_maps",
+      "path": "/list_property_maps",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_scripts",
+      "path": "/list_scripts",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_segments",
+      "path": "/list_segments",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_shadowed_globals",
+      "path": "/list_shadowed_globals",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "500",
+          "source": "query"
+        },
+        {
+          "name": "include_all_sections",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "list_strings",
+      "path": "/list_strings",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "mcp_health",
+      "path": "/mcp/health",
+      "method": "GET",
+      "category": "utility",
+      "params": []
+    },
+    {
+      "name": "mcp_schema",
+      "path": "/mcp/schema",
+      "method": "GET",
+      "category": "utility",
+      "params": []
+    },
+    {
+      "name": "merge_program_documentation",
+      "path": "/merge_program_documentation",
+      "method": "POST",
+      "category": "documentation",
+      "params": [
+        {
+          "name": "source",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "dry_run",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "modify_struct_field",
+      "path": "/modify_struct_field",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "struct_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "new_type",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "new_name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "modify_struct_field_type",
+      "path": "/modify_struct_field_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "struct_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "move_data_type_to_category",
+      "path": "/move_data_type_to_category",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "category_path",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "move_file",
+      "path": "/move_file",
+      "method": "POST",
+      "category": "project",
+      "params": [
+        {
+          "name": "filePath",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "destFolder",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "move_folder",
+      "path": "/move_folder",
+      "method": "POST",
+      "category": "project",
+      "params": [
+        {
+          "name": "sourcePath",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "destPath",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "open_program",
+      "path": "/open_program",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "auto_analyze",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "open_project",
+      "path": "/open_project",
+      "method": "POST",
+      "category": "headless",
+      "params": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "headless",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "project_info",
+      "path": "/project/info",
+      "method": "GET",
+      "category": "project",
+      "params": []
+    },
+    {
+      "name": "prompt_policy",
+      "path": "/prompt_policy",
+      "method": "POST",
+      "category": "system",
+      "params": [
+        {
+          "name": "action",
+          "type": "string",
+          "required": false,
+          "default": "status",
+          "source": "body"
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": false,
+          "default": "automation",
+          "source": "body"
+        },
+        {
+          "name": "seconds",
+          "type": "integer",
+          "required": false,
+          "default": "120",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "read_memory",
+      "path": "/read_memory",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "length",
+          "type": "integer",
+          "required": false,
+          "default": "16",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "reanalyze",
+      "path": "/reanalyze",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "recreate_struct",
+      "path": "/recreate_struct",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "fields",
+          "type": "json",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "size",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "body"
+        },
+        {
+          "name": "replace_placeholder",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "force",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "remove_function_tag",
+      "path": "/remove_function_tag",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "tags",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "assignments",
+          "type": "array",
+          "required": false,
+          "default": "[]",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "remove_program_option",
+      "path": "/remove_program_option",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "group",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "remove_property",
+      "path": "/remove_property",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "map",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "remove_reference",
+      "path": "/remove_reference",
+      "method": "POST",
+      "category": "xref",
+      "params": [
+        {
+          "name": "from_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "to_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "operand_index",
+          "type": "integer",
+          "required": false,
+          "default": "-1",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "remove_struct_field",
+      "path": "/remove_struct_field",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "struct_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "field_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "rename_data_type",
+      "path": "/rename_data_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "old_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "rename_function",
+      "path": "/rename_function",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "old_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "strict_mode",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "rename_symbol",
+      "path": "/rename_symbol",
+      "method": "POST",
+      "category": "symbol",
+      "params": [
+        {
+          "name": "target",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "kind",
+          "type": "string",
+          "required": false,
+          "default": "auto",
+          "source": "body"
+        },
+        {
+          "name": "old_name",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "rename_variables",
+      "path": "/rename_variables",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "variable_renames",
+          "type": "object",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "force_individual",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "resize_struct",
+      "path": "/resize_struct",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_size",
+          "type": "integer",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "preserve_fields",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "force",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "resolve_duplicate_type",
+      "path": "/resolve_duplicate_type",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "delete_demangler_stub",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "run_analysis",
+      "path": "/run_analysis",
+      "method": "POST",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "run_ghidra_script",
+      "path": "/run_ghidra_script",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "script_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "args",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "timeout_seconds",
+          "type": "integer",
+          "required": false,
+          "default": "300",
+          "source": "body"
+        },
+        {
+          "name": "capture_output",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "run_script_inline",
+      "path": "/run_script_inline",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "code",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "args",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "save_all_programs",
+      "path": "/save_all_programs",
+      "method": "GET",
+      "category": "program",
+      "params": []
+    },
+    {
+      "name": "save_program",
+      "path": "/save_program",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_byte_patterns",
+      "path": "/search_byte_patterns",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "pattern",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "mask",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_data_types",
+      "path": "/search_data_types",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "pattern",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_functions",
+      "path": "/search_functions",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "name_pattern",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_functions_by_tag",
+      "path": "/search_functions_by_tag",
+      "method": "GET",
+      "category": "function",
+      "params": [
+        {
+          "name": "tag",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "1000",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_functions_enhanced",
+      "path": "/search_functions_enhanced",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "name_pattern",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "min_xrefs",
+          "type": "integer",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "max_xrefs",
+          "type": "integer",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "calling_convention",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "has_custom_name",
+          "type": "boolean",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "is_thunk",
+          "type": "boolean",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "is_external",
+          "type": "boolean",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "regex",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "query"
+        },
+        {
+          "name": "sort_by",
+          "type": "string",
+          "required": false,
+          "default": "address",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_instructions",
+      "path": "/search_instructions",
+      "method": "GET",
+      "category": "analysis",
+      "params": [
+        {
+          "name": "mnemonic",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "operand_pattern",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "function",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "500",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "search_strings",
+      "path": "/search_strings",
+      "method": "GET",
+      "category": "listing",
+      "params": [
+        {
+          "name": "search_term",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "min_length",
+          "type": "integer",
+          "required": false,
+          "default": "4",
+          "source": "query"
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "query"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": "100",
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "server_admin_set_permissions",
+      "path": "/server/admin/set_permissions",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "accessLevel",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_admin_terminate_all_checkouts",
+      "path": "/server/admin/terminate_all_checkouts",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_admin_terminate_checkout",
+      "path": "/server/admin/terminate_checkout",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "checkoutId",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "checkout_id",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_admin_users",
+      "path": "/server/admin/users",
+      "method": "GET",
+      "category": "server",
+      "params": []
+    },
+    {
+      "name": "server_authenticate",
+      "path": "/server/authenticate",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_checkouts",
+      "path": "/server/checkouts",
+      "method": "GET",
+      "category": "server",
+      "params": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "server_connect",
+      "path": "/server/connect",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "host",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "port",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_disconnect",
+      "path": "/server/disconnect",
+      "method": "POST",
+      "category": "server",
+      "params": []
+    },
+    {
+      "name": "server_repositories",
+      "path": "/server/repositories",
+      "method": "GET",
+      "category": "server",
+      "params": []
+    },
+    {
+      "name": "server_repository_create",
+      "path": "/server/repository/create",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_repository_file",
+      "path": "/server/repository/file",
+      "method": "GET",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "server_repository_files",
+      "path": "/server/repository/files",
+      "method": "GET",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "server_status",
+      "path": "/server/status",
+      "method": "GET",
+      "category": "headless",
+      "params": []
+    },
+    {
+      "name": "server_version_control_add",
+      "path": "/server/version_control/add",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "keepCheckedOut",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_version_control_checkin",
+      "path": "/server/version_control/checkin",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "keepCheckedOut",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_version_control_checkout",
+      "path": "/server/version_control/checkout",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_version_control_undo_checkout",
+      "path": "/server/version_control/undo_checkout",
+      "method": "POST",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "server_version_history",
+      "path": "/server/version_history",
+      "method": "GET",
+      "category": "server",
+      "params": [
+        {
+          "name": "repo",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_bookmark",
+      "path": "/set_bookmark",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_comment",
+      "path": "/set_comment",
+      "method": "POST",
+      "category": "comment",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "default": "plate",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_function_no_return",
+      "path": "/set_function_no_return",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "no_return",
+          "type": "boolean",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_function_prototype",
+      "path": "/set_function_prototype",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "prototype",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "calling_convention",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_function_tag_comment",
+      "path": "/set_function_tag_comment",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_function_this_type",
+      "path": "/set_function_this_type",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "this_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_global",
+      "path": "/set_global",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "array_length",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "body"
+        },
+        {
+          "name": "plate_comment",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "strict_mode",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "allow_evict",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "set_image_base",
+      "path": "/set_image_base",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_program_option",
+      "path": "/set_program_option",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "group",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_property",
+      "path": "/set_property",
+      "method": "POST",
+      "category": "program",
+      "params": [
+        {
+          "name": "map",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_variable_storage",
+      "path": "/set_variable_storage",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "variable_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "storage",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_variable_type",
+      "path": "/set_variable_type",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "variable_name",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "new_type",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "set_variables",
+      "path": "/set_variables",
+      "method": "POST",
+      "category": "function",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "variables",
+          "type": "string",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "suggest_field_names",
+      "path": "/suggest_field_names",
+      "method": "POST",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "struct_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "body"
+        },
+        {
+          "name": "struct_size",
+          "type": "integer",
+          "required": false,
+          "default": "0",
+          "source": "body"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "switch_program",
+      "path": "/switch_program",
+      "method": "GET",
+      "category": "program",
+      "params": [
+        {
+          "name": "program",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "tool_goto_address",
+      "path": "/tool/goto_address",
+      "method": "POST",
+      "category": "utility",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "tool_launch_codebrowser",
+      "path": "/tool/launch_codebrowser",
+      "method": "POST",
+      "category": "utility",
+      "params": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "source": "body"
+        }
+      ]
+    },
+    {
+      "name": "tool_running_tools",
+      "path": "/tool/running_tools",
+      "method": "GET",
+      "category": "utility",
+      "params": []
+    },
+    {
+      "name": "validate_data_type",
+      "path": "/validate_data_type",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "address",
+          "type": "string",
+          "param_type": "address",
+          "required": false,
+          "default": "",
+          "source": "query"
+        },
+        {
+          "name": "type_name",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    },
+    {
+      "name": "validate_function_prototype",
+      "path": "/validate_function_prototype",
+      "method": "GET",
+      "category": "datatype",
+      "params": [
+        {
+          "name": "function_address",
+          "type": "string",
+          "param_type": "address",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "prototype",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "calling_convention",
+          "type": "string",
+          "required": true,
+          "source": "query"
+        },
+        {
+          "name": "program",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "source": "query"
+        }
+      ]
+    }
+  ]
+}

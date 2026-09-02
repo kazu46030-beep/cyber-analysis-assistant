@@ -5,7 +5,7 @@ Codexと承認済みMCPを使うサイバー解析支援のための、Agentル�
 ## 構成
 
 ```text
-SOCアナリスト
+Security Analyst
     ↓
 Codex（主Agent）
     ├─ ghidra-static-analysis Skill → 外部管理のGhidraMCP
@@ -20,6 +20,7 @@ Codex（主Agent）
 | `skills/ghidra-static-analysis/` | GhidraMCPのTool制御と限定Evidence収集 |
 | `skills/malware-analysis-report/` | 通信・IOC、挙動、永続化、不審度、Fullレポート |
 | `docs/architecture.md` | 現行アーキテクチャ |
+| `docs/ghidra_mcp_setup.md` | FLARE-VM／Ghidra／GhidraMCPの別環境セットアップ手順 |
 | `docs/roadmap.md` | Python Helperとサブエージェントの導入順序 |
 | `docs/evaluation.md` | 品質・コスト・待ち時間の比較基準 |
 

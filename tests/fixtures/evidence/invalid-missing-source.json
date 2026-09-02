@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "subject": {"id": "invalid-case", "kind": "Windows PE", "provenance": "synthetic", "identifiers_redacted": true},
+  "metadata": {},
+  "acquisition": [],
+  "observations": [
+    {"id": "F-001", "classification": "fact", "category": "test", "summary": "Missing source must fail.", "evidence": []}
+  ],
+  "limits": []
+}

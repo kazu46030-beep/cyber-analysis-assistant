@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0",
+  "subject": {
+    "id": "safe-test-pe",
+    "kind": "Windows PE",
+    "provenance": "user-authored benign test executable",
+    "identifiers_redacted": true
+  },
+  "metadata": {
+    "architecture": "x86",
+    "address_size_bits": 64,
+    "endian": "little",
+    "compiler": "windows",
+    "reported_function_count": 48,
+    "reported_symbol_count": 420
+  },
+  "acquisition": [
+    {"tool": "get_metadata", "scope": "current Program metadata; one call", "count": 1},
+    {"tool": "list_imports", "scope": "offset=0, limit=50", "count": 19},
+    {"tool": "list_exports", "scope": "offset=0, limit=50", "count": 29},
+    {"tool": "list_functions_enhanced", "scope": "offset=0, limit=50", "count": 32},
+    {"tool": "find_anti_analysis_techniques", "scope": "current Program; one detector call", "count": 1},
+    {"tool": "detect_crypto_constants", "scope": "current Program; implementation-status response", "count": 0},
+    {"tool": "detect_malware_behaviors", "scope": "current Program; one detector call", "count": 0},
+    {"tool": "get_function_by_address", "scope": "two evidence-selected functions; addresses removed", "count": 2},
+    {"tool": "get_function_xrefs", "scope": "main; offset=0, limit=50", "count": 2},
+    {"tool": "get_function_callees", "scope": "main; offset=0, limit=50", "count": 10},
+    {"tool": "decompile_function", "scope": "main and simple_xor individually; timeout=60; pseudocode not retained", "count": 2},
+    {"tool": "get_function_variables", "scope": "simple_xor; limit=50", "count": 4},
+    {"tool": "analyze_control_flow", "scope": "simple_xor only", "count": 1},
+    {"tool": "analyze_dataflow", "scope": "simple_xor entry, variable=k, backward, max_steps=20", "count": 0}
+  ],
+  "observations": [
+    {
+      "id": "F-001",
+      "classification": "fact",
+      "category": "file_operation",
+      "summary": "Reviewed imports include CreateFileA, WriteFile, and CloseHandle.",
+      "evidence": ["CreateFileA", "WriteFile", "CloseHandle"],
+      "source": {"tool": "list_imports", "target": "import table", "scope": "offset=0, limit=50; 19 returned"}
+    },
+    {
+      "id": "F-002",
+      "classification": "fact",
+      "category": "runtime_library",
+      "summary": "Reviewed imports include common allocation, string, and formatted-output routines.",
+      "evidence": ["calloc", "free", "malloc", "memset", "printf", "realloc", "strlen"],
+      "source": {"tool": "list_imports", "target": "import table", "scope": "offset=0, limit=50; 19 returned"}
+    },
+    {
+      "id": "F-003",
+      "classification": "fact",
+      "category": "network",
+      "summary": "No network-related API was present in the 19 reviewed imports.",
+      "evidence": [],
+      "source": {"tool": "list_imports", "target": "import table", "scope": "offset=0, limit=50; 19 returned"}
+    },
+    {
+      "id": "I-001",
+      "classification": "inference",
+      "category": "file_operation",
+      "summary": "The import combination is consistent with a candidate file-create/write capability, but invocation was not confirmed.",
+      "confidence": "low",
+      "evidence": ["F-001"],
+      "source": {"tool": "list_imports", "target": "import table", "scope": "imports only; no Xref or decompilation"}
+    },
+    {
+      "id": "U-001",
+      "classification": "unknown",
+      "category": "network",
+      "summary": "Runtime network activity and endpoint presence are unconfirmed because strings and functions outside the selected main path were not reviewed.",
+      "evidence": [],
+      "source": {"tool": "decompile_function", "target": "normalized main summary", "scope": "main reviewed; no network calls observed; other functions and strings not exhaustively reviewed"}
+    },
+    {
+      "id": "U-002",
+      "classification": "unknown",
+      "category": "persistence",
+      "summary": "Persistence is unconfirmed because registry, service, task, startup, WMI, and code-use evidence was not reviewed.",
+      "evidence": [],
+      "source": {"tool": "list_imports", "target": "import table", "scope": "no persistence-focused strings, Xref, or decompilation"}
+    },
+    {
+      "id": "U-003",
+      "classification": "unknown",
+      "category": "anti_analysis",
+      "summary": "A heuristic detector returned one debugger-detection candidate based on CloseHandle, but selected main decompilation placed it in ordinary file-handle cleanup.",
+      "evidence": [],
+      "source": {"tool": "decompile_function", "target": "normalized main summary", "scope": "one selected function; pseudocode and address removed"}
+    },
+    {
+      "id": "F-004",
+      "classification": "fact",
+      "category": "anti_analysis_detector",
+      "summary": "The detector labeled CloseHandle in main as a high-severity debugger-detection candidate.",
+      "evidence": ["category=debugger_detection", "technique=CloseHandle", "function=main", "detector_severity=high"],
+      "source": {"tool": "find_anti_analysis_techniques", "target": "normalized detector output", "scope": "one finding; local address removed"}
+    },
+    {
+      "id": "I-002",
+      "classification": "inference",
+      "category": "anti_analysis_detector",
+      "summary": "The CloseHandle-only finding is a likely heuristic false positive because selected main code uses it with CreateFileA and WriteFile in a normal file-handle lifecycle.",
+      "confidence": "high",
+      "evidence": ["F-001", "F-004", "F-006"],
+      "source": {"tool": "decompile_function", "target": "normalized main summary", "scope": "selected main only; do not accept detector severity as proof"}
+    },
+    {
+      "id": "U-004",
+      "classification": "unknown",
+      "category": "crypto",
+      "summary": "Standard cryptographic algorithms and cryptographic keys remain unconfirmed because the detector endpoint is not implemented; a separate XOR transform candidate was identified manually.",
+      "evidence": ["status=Not yet implemented"],
+      "source": {"tool": "detect_crypto_constants", "target": "detector status", "scope": "implementation-status response; no standard crypto constants or keys returned"}
+    },
+    {
+      "id": "F-005",
+      "classification": "fact",
+      "category": "malware_behavior_detector",
+      "summary": "The malware-behavior detector returned zero findings for the current Program.",
+      "evidence": ["total_behaviors_detected=0"],
+      "source": {"tool": "detect_malware_behaviors", "target": "detector summary", "scope": "one detector call; zero findings does not prove absence"}
+    },
+    {
+      "id": "F-006",
+      "classification": "fact",
+      "category": "file_operation",
+      "summary": "Selected main pseudocode calls CreateFileA, WriteFile, and CloseHandle in one file-handle lifecycle.",
+      "evidence": ["CreateFileA", "WriteFile", "CloseHandle", "function=main"],
+      "source": {"tool": "decompile_function", "target": "normalized main summary", "scope": "one selected function; 1057-character pseudocode inspected but not retained"}
+    },
+    {
+      "id": "F-007",
+      "classification": "fact",
+      "category": "data_transformation",
+      "summary": "Selected main calls simple_xor with numeric argument 0x5A, and selected simple_xor pseudocode contains one XOR operation without an embedded numeric constant.",
+      "evidence": ["caller=main", "callee=simple_xor", "operation=XOR", "caller_argument=0x5A"],
+      "source": {"tool": "decompile_function", "target": "normalized main and simple_xor summaries", "scope": "two selected functions; pseudocode and addresses removed"}
+    },
+    {
+      "id": "I-003",
+      "classification": "inference",
+      "category": "key_candidate",
+      "summary": "0x5A is a caller-supplied XOR key candidate for a simple reversible transform; it is not evidence of a standard cryptographic algorithm or a credential secret.",
+      "confidence": "high",
+      "evidence": ["F-007"],
+      "source": {"tool": "decompile_function", "target": "normalized caller/callee relationship", "scope": "main and simple_xor only"}
+    },
+    {
+      "id": "F-008",
+      "classification": "fact",
+      "category": "control_flow",
+      "summary": "simple_xor has two byte parameters and low control-flow complexity: one basic block, complexity 1, no loop, and no call.",
+      "evidence": ["parameters=base:byte,k:byte", "cyclomatic_complexity=1", "basic_blocks=1", "loops=0", "calls=0"],
+      "source": {"tool": "analyze_control_flow", "target": "normalized simple_xor metrics", "scope": "one selected function; combined with get_function_variables limit=50"}
+    },
+    {
+      "id": "U-005",
+      "classification": "unknown",
+      "category": "dataflow",
+      "summary": "Backward Dataflow for variable k could not start from the function entry because no PCode operation exists at that address.",
+      "evidence": ["result=No PCode operations at selected function entry"],
+      "source": {"tool": "analyze_dataflow", "target": "simple_xor entry and variable k", "scope": "direction=backward, max_steps=20; no disassembly or PCode retrieval used to bypass the failure"}
+    }
+  ],
+  "limits": [
+    "Static analysis only.",
+    "Two evidence-selected functions were decompiled individually; raw pseudocode was not retained.",
+    "Xrefs and Callees were limited to main with limit=50.",
+    "Dataflow requires an evidence-selected PCode operation address; the function-entry attempt failed and was not bypassed.",
+    "The anti-analysis result is heuristic and the crypto detector is not implemented.",
+    "Program name, executable path, addresses, and other local identifiers were removed."
+  ]
+}
